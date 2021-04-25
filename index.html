@@ -18,7 +18,7 @@ html, body {
 <canvas id="myCanvas" onload ="move()" onclick = "clickfunc()" onkeydown="uniKeyCode(event)" width="800" height="400" style="border:3px solid black;">
 </canvas>
 
-<img id="grassland"  style="visibility:hidden" src="https://i.ibb.co/HPcgvQ3/New-Project-7.png" alt="">
+<img id="grassland"  style="visibility:hidden" src="https://i.imgur.com/pGARt1V.png" alt="">
 
 
 
@@ -38,8 +38,11 @@ var ctx = c.getContext("2d");
 var w = window.innerWidth;
 var h = window.innerHeight;
 h = h - 100;
+w = w - 40;
 c.width  = w;
 c.height = h;
+
+
 var scalew = (w/800);
 var scaleh = (h)/(400);
 
@@ -48,9 +51,8 @@ ctx.scale(scalew,scaleh);
 window.onresize = function(event) {
 w = window.innerWidth;
 h = window.innerHeight;
-
 h = h - 100;
-
+w = w - 40;
 c.width  = w;
 c.height = h;
 scalew = (w/800);
@@ -78,6 +80,7 @@ ctx.drawImage(bgimg, 0, 0,800,400);
 var fakeX = (canvasX/scalew).toFixed(1);
 var fakeY = (canvasY/scaleh).toFixed(1);
 
+ctx.fillStyle = "white";
 ctx.font = "30px Arial";
 ctx.fillText(fakeX, 10, 50);
 ctx.fillText(fakeY, 100, 50);
