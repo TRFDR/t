@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<style>
+html, body {
+    max-width: 100%;
+    overflow-y: hidden;
+	overflow-x: hidden;
+
+}
+</style>
+
+
+</head>
+<body style="background-color:black;">
+<canvas id="myCanvas" onload ="move()" onclick = "clickfunc()" onkeydown="uniKeyCode(event)" width="800" height="400" style="border:3px solid black;">
+</canvas>
+
+<img id="grassland"  style="visibility:hidden" src="https://i.ibb.co/HPcgvQ3/New-Project-7.png" alt="">
+
+
+
+<script>
+
+
+var myVar = setInterval(move, 20);
+
+
+function clickfunc(){
+}
+
+var c = document.getElementById("myCanvas");
+   
+var ctx = c.getContext("2d");
+
+var w = window.innerWidth;
+var h = window.innerHeight;
+h = h - 100;
+c.width  = w;
+c.height = h;
+var scalew = (w/800);
+var scaleh = (h)/(400);
+
+ctx.scale(scalew,scaleh);
+
+window.onresize = function(event) {
+w = window.innerWidth;
+h = window.innerHeight;
+
+h = h - 100;
+
+c.width  = w;
+c.height = h;
+scalew = (w/800);
+scaleh = (h)/(400);
+
+ctx.scale(scalew,scaleh);
+
+
+};
+
+var canvasX = 0;
+var canvasY = 0;
+c.addEventListener("mousemove", function(e) { 
+    var cRect = c.getBoundingClientRect();              // Gets the CSS positions along with width/height
+    canvasX = Math.round(e.clientX - cRect.left);        // Subtract the 'left' of the canvas from the X/Y
+    canvasY = Math.round(e.clientY - cRect.top);         // positions to get make (0,0) the top left of the    
+});
+
+
+function move() {
+//Background Image
+var bgimg = document.getElementById("grassland");
+ctx.drawImage(bgimg, 0, 0,800,400);
+
+var fakeX = (canvasX/scalew).toFixed(1);
+var fakeY = (canvasY/scaleh).toFixed(1);
+
+ctx.font = "30px Arial";
+ctx.fillText(fakeX, 10, 50);
+ctx.fillText(fakeY, 100, 50);
+
+
+}//End of FUNCTION
+
+
+</script>
+
+
+<div style='display:none'>{title}</div>
+<div style='display:none'>{menu}</div>
+<div style='display:none'>{content}</div>
+<div style='padding: 20px; width:100%; text-align:center;'>{footer}</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
