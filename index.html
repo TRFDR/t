@@ -18,7 +18,7 @@ html, body {
 <canvas id="myCanvas" onload ="move()" onclick = "clickfunc()" onkeydown="uniKeyCode(event)" width="800" height="400" style="border:3px solid black;">
 </canvas>
 
-<img id="grassland"  style="visibility:hidden" src="https://i.imgur.com/pGARt1V.png" alt="">
+<img id="grassland"  style="visibility:hidden" src="https://i.imgur.com/fFjH8zy.png" alt="">
 
 
 
@@ -38,7 +38,7 @@ var ctx = c.getContext("2d");
 var w = window.innerWidth;
 var h = window.innerHeight;
 h = h - 100;
-w = w - 40;
+w = h*2;
 c.width  = w;
 c.height = h;
 
@@ -52,7 +52,8 @@ window.onresize = function(event) {
 w = window.innerWidth;
 h = window.innerHeight;
 h = h - 100;
-w = w - 40;
+
+w = h*2;
 c.width  = w;
 c.height = h;
 scalew = (w/800);
@@ -71,6 +72,16 @@ c.addEventListener("mousemove", function(e) {
     canvasY = Math.round(e.clientY - cRect.top);         // positions to get make (0,0) the top left of the    
 });
 
+function drawStroked(text, x, y) {
+    ctx.font = '30px Arial';
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 4;
+    ctx.strokeText(text, x, y);
+    ctx.fillStyle = 'white';
+    ctx.fillText(text, x, y);
+}
+
+//drawStroked("37°", 50, 150);
 
 function move() {
 //Background Image
@@ -82,8 +93,13 @@ var fakeY = (canvasY/scaleh).toFixed(1);
 
 ctx.fillStyle = "white";
 ctx.font = "30px Arial";
-ctx.fillText(fakeX, 10, 50);
-ctx.fillText(fakeY, 100, 50);
+drawStroked("X: " + fakeX, 30, 50);
+drawStroked("Y: " + fakeY, 180, 50);
+
+drawStroked("Width: " + w, 400, 50);
+drawStroked("Height: " + h, 590, 50);
+
+drawStroked(w/h, 770, 380);
 
 
 }//End of FUNCTION
@@ -98,7 +114,6 @@ ctx.fillText(fakeY, 100, 50);
 <div style='padding: 20px; width:100%; text-align:center;'>{footer}</div>
 </body>
 </html>
-
 
 
 
